@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>clean</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="default.css" media="screen">
+</head>
+<body>
+	<?php 
+		if ($nb_comment_deleted != false) 
+			print("Suppression de $nb_comment_deleted commentaires.<br />");
+		if ($nb_referrers_deleted != false) 
+			print("Suppression de $nb_referrers_deleted referrers.<br />");
+		if ($nb_acls_deleted != false) 
+			print("Suppression de $nb_acls_deleted acls.<br />");
+		if ($nb_links_deleted != 0) 
+			print("Suppression de $nb_links_deleted liens.<br />");
+	?>
+	<form action='?action=delete' method='post'>
+		<?php
+			foreach ($users as $user => $pages) {
+				print("<input type='checkbox' name='$user' value='$user'>$user</input>"); 
+				print("<span class='page_owner'>(");
+				foreach ($pages['owner'] as $page) {
+					print($page.', ');
+				}
+				print(")</span><span class='page_user'>(");
+				foreach ($pages['user'] as $page) {
+					print($page.', ');
+				}
+				print(")</span><br />");
+
+			}
+		?>
+		<input type="submit" value='Supprimer' />
+	</form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+label:after {
+	content: '\A';
+	white-space: pre;
+}
+
+label {
+	min-width: 200px;
+}
+
+.page_owner, .page_user {
+	color: red;
+	font-size: 80%;
+}
+
+.page_user {
+	color: orange;
+}
